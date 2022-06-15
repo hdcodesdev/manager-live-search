@@ -1,7 +1,10 @@
 import React from "react";
 import "./Search.css";
+import useGetEmployees from "./useGetEmployees";
 
 function Search() {
+  const employees = useGetEmployees();
+  console.log(employees);
   return (
     <div className="search">
       <div className="search__input">
@@ -10,10 +13,7 @@ function Search() {
           <button type="submit">Search</button>
         </form>
       </div>
-      <div className="searchResults">
-        {/* <div className="searchResult"></div> */}
-        {/* <SearchResult /> */}
-      </div>
+      <div className="searchResults"></div>
     </div>
   );
 }
