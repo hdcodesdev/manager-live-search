@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./App.css";
+import Search from "./Search";
 
 function App() {
   useEffect(() => {
@@ -15,7 +16,13 @@ function App() {
     fetchEmployees();
   }, []);
 
-  return <div className="app"></div>;
+  return (
+    <div className="app">
+      <div className="app__body">
+        <Search />
+      </div>
+    </div>
+  );
 }
 
 export default App;
