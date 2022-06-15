@@ -1,6 +1,7 @@
 import React from "react";
 import "./Search.css";
 import SearchResult from "./SearchResult";
+import SearchResults from "./SearchResults";
 import useGetEmployees from "./useGetEmployees";
 
 function Search() {
@@ -14,13 +15,7 @@ function Search() {
           <button type="submit">Search</button>
         </form>
       </div>
-      <div className="searchResults">
-        <SearchResult
-          initials="HD"
-          name="Harinder Dulai"
-          email="harinder.dulai@test.com"
-        />
-      </div>
+      <SearchResults />
     </div>
   );
 }
