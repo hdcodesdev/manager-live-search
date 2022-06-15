@@ -2,12 +2,12 @@
   display: flex;
   flex-flow: column;
   padding: 5px;
+  width: 200px;
 }
 
 .search__input {
   background-color: white;
   border: 1px solid lightgray;
-  border-radius: 5px;
   padding: 10px;
 }
 
@@ -23,5 +23,19 @@
 }
 
 .search__input > form > button {
-  display: none;
+  background: none;
+  border: none;
+}
+.search__input > form > button::after {
+  content: "";
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+  transform: rotate(-45deg);
+}
+.search__input > form > button.search__active::after {
+  transform: rotate(135deg);
+  margin-bottom: 5px;
 }
