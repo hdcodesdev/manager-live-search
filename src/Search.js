@@ -5,6 +5,8 @@ import useGetEmployees from "./useGetEmployees";
 
 function Search() {
   const [searchActive, setSearchActive] = useState(false);
+  const [searchedEmployees, setSearchedEmployees] = useState([]);
+  const [isFiltered, setIsFiltered] = useState(false);
   const employees = useGetEmployees();
 
   const inputFocus = (e) => {
@@ -14,11 +16,28 @@ function Search() {
     setSearchActive(false);
   };
 
+  const inputChange = (e) => {
+    const { value } = e.target;
+    const filteredEmployees = employees.filter((employee) => {
+      const employeeName = employee.name.replace(/\s+/g, "").toLowerCase();
+      return employeeName.includes(value.toLowerCase().replace(/\s+/g, ""));
+    });
+
+    if (filteredEmployees.length) {
+      setSearchedEmployees(filteredEmployees);
+      setSearchActive(true);
+      setIsFiltered(true);
+    } else {
+      setSearchedEmployees([]);
+      setSearchActive(false);
+      setIsFiltered(false);
+    }
+  };
+
   const submitSearch = (e) => {
     e.preventDefault();
   };
 
-  console.log(employees);
   return (
     <div className="search">
       <div className="search__input">
@@ -27,6 +46,7 @@ function Search() {
             type="text"
             onFocus={inputFocus}
             onBlur={inputBlur}
+            onChange={inputChange}
             placeholder="Choose Manager"
           />
           <button
@@ -37,7 +57,7 @@ function Search() {
         </form>
       </div>
       {employees.length > 0 && searchActive && (
-        <SearchResults employees={employees} />
+        <SearchResults employees={isFiltered ? searchedEmployees : employees} />
       )}
     </div>
   );
