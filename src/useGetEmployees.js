@@ -21,6 +21,9 @@ function useGetEmployees() {
               id: manager.id,
               name: manager.attributes.name,
               email: email[0].attributes.email,
+              initials:
+                manager.attributes.firstName[0] +
+                manager.attributes.lastName[0],
             };
           });
 

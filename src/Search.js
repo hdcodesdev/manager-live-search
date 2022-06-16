@@ -36,7 +36,9 @@ function Search() {
           ></button>
         </form>
       </div>
-      {searchActive && <SearchResults />}
+      {employees.length > 0 && searchActive && (
+        <SearchResults employees={employees} />
+      )}
     </div>
   );
 }
