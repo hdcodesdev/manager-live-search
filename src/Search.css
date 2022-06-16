@@ -35,7 +35,7 @@
   border-right: 2px solid;
   transform: rotate(-45deg);
 }
-.search__input > form > button.search__active::after {
+.search__input > form > button.search--active::after {
   transform: rotate(135deg);
   margin-bottom: 5px;
 }

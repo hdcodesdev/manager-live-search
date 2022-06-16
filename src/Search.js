@@ -48,11 +48,14 @@ function Search() {
             onBlur={inputBlur}
             onChange={inputChange}
             placeholder="Choose Manager"
+            aria-label="Manager"
+            aria-expanded={searchActive ? true : false}
           />
           <button
-            className={searchActive ? "search__active" : ""}
+            className={searchActive ? "search--active" : ""}
             onClick={submitSearch}
             type="submit"
+            aria-label="Search"
           ></button>
         </form>
       </div>

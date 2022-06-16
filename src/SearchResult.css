@@ -40,3 +40,15 @@
 .searchResult__info > p {
   font-size: 9px;
 }
+
+.searchResult--active {
+  background-color: lightcyan;
+}
+
+.searchResult--active > .searchResult__info > h2 {
+  color: teal;
+}
+
+.searchResult:hover {
+  background-color: lightcyan;
+}
