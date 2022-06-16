@@ -11,12 +11,18 @@ function useGetEmployees() {
         .then((responseData) => {
           const baseData = responseData.data;
           const includedData = responseData.included;
-          const employeeType = "employees";
 
-          const employeesList = [
-            ...baseData.filter((item) => item.type === employeeType),
-            ...includedData.filter((item) => item.type === employeeType),
-          ];
+          const employeesList = baseData.map((manager) => {
+            const email = includedData.filter(
+              (account) => account.id === manager.relationships.account.data.id
+            );
+
+            return {
+              id: manager.id,
+              name: manager.attributes.name,
+              email: email[0].attributes.email,
+            };
+          });
 
           setEmployees(employeesList);
         })
