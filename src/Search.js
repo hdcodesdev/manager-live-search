@@ -11,7 +11,9 @@ function Search() {
   const [isFiltered, setIsFiltered] = useState(false);
 
   const employees = useGetEmployees();
-  const employeeIndex = employees.length;
+  const employeeIndex = isFiltered
+    ? searchedEmployees.length
+    : employees.length;
 
   const handleKeyUp = (e) => {
     if (e.keyCode === 40)
@@ -47,6 +49,11 @@ function Search() {
 
   const submitSearch = (e) => {
     e.preventDefault();
+    const name = isFiltered
+      ? searchedEmployees[activeIndex].name
+      : employees[activeIndex].name;
+    setSelectedEmployee(name);
+    setSearchActive(false);
   };
 
   const handleSelectdEmployee = (employeeName) => {
