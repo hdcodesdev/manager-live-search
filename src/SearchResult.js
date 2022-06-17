@@ -1,9 +1,13 @@
 import React from "react";
 import "./SearchResult.css";
 
-function SearchResult({ initials, name, email, onEmployeeClick }) {
+function SearchResult({ initials, name, email, onEmployeeClick, isActive }) {
   return (
-    <div className="searchResult" onClick={onEmployeeClick}>
+    <div
+      className="searchResult"
+      aria-selected={isActive ? "true" : "false"}
+      onClick={onEmployeeClick}
+    >
       <div className="searchResult__avatar">
         <p>{initials}</p>
       </div>
