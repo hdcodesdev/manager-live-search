@@ -14,16 +14,12 @@ function Search() {
   const employeeIndex = employees.length;
 
   const handleKeyUp = (e) => {
-    setActiveIndex(
-      (prevIndex) => (prevIndex + employeeIndex - 1) % employeeIndex
-    );
-
-    console.log(activeIndex);
-  };
-
-  const handleKeyDown = (e) => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % employeeIndex);
-    console.log(activeIndex);
+    if (e.keyCode === 40)
+      setActiveIndex((prevIndex) => (prevIndex + 1) % employeeIndex);
+    else if (e.keyCode === 38)
+      setActiveIndex(
+        (prevIndex) => (prevIndex + employeeIndex - 1) % employeeIndex
+      );
   };
 
   const inputFocus = (e) => {
@@ -68,7 +64,6 @@ function Search() {
             onFocus={inputFocus}
             onChange={inputChange}
             onKeyUp={handleKeyUp}
-            onKeyDown={handleKeyDown}
             placeholder="Choose Manager"
             aria-label="Manager"
             aria-expanded={searchActive ? true : false}

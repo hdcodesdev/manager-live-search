@@ -42,11 +42,11 @@
   font-size: 9px;
 }
 
-.searchResult--active {
+.searchResult[aria-selected="true"] {
   background-color: lightcyan;
 }
 
-.searchResult--active > .searchResult__info > h2 {
+.searchResult[aria-selected="true"] > .searchResult__info > h2 {
   color: teal;
 }
 
