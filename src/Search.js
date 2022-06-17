@@ -5,10 +5,24 @@ import useGetEmployees from "./useGetEmployees";
 
 function Search() {
   const [selectedEmployee, setSelectedEmployee] = useState("");
+  const [activeIndex, setActiveIndex] = useState(0);
   const [searchActive, setSearchActive] = useState(false);
   const [searchedEmployees, setSearchedEmployees] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
+
   const employees = useGetEmployees();
+  const employeeIndex = isFiltered
+    ? searchedEmployees.length
+    : employees.length;
+
+  const handleKeyUp = (e) => {
+    if (e.keyCode === 40)
+      setActiveIndex((prevIndex) => (prevIndex + 1) % employeeIndex);
+    else if (e.keyCode === 38)
+      setActiveIndex(
+        (prevIndex) => (prevIndex + employeeIndex - 1) % employeeIndex
+      );
+  };
 
   const inputFocus = (e) => {
     if (employees && employees.length) setSearchActive(true);
@@ -35,6 +49,11 @@ function Search() {
 
   const submitSearch = (e) => {
     e.preventDefault();
+    const name = isFiltered
+      ? searchedEmployees[activeIndex].name
+      : employees[activeIndex].name;
+    setSelectedEmployee(name);
+    setSearchActive(false);
   };
 
   const handleSelectdEmployee = (employeeName) => {
@@ -51,6 +70,7 @@ function Search() {
             value={selectedEmployee}
             onFocus={inputFocus}
             onChange={inputChange}
+            onKeyUp={handleKeyUp}
             placeholder="Choose Manager"
             aria-label="Manager"
             aria-expanded={searchActive ? true : false}
@@ -67,6 +87,7 @@ function Search() {
         <SearchResults
           employees={isFiltered ? searchedEmployees : employees}
           onEmployeeClick={handleSelectdEmployee}
+          activeIndex={activeIndex}
         />
       )}
     </div>
