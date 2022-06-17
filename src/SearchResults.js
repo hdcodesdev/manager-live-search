@@ -2,7 +2,7 @@ import React from "react";
 import "./SearchResults.css";
 import SearchResult from "./SearchResult";
 
-function SearchResults({ employees }) {
+function SearchResults({ employees, onEmployeeClick }) {
   return (
     <div className="searchResults">
       {employees.map((employee) => (
@@ -11,6 +11,7 @@ function SearchResults({ employees }) {
           initials={employee.initials}
           name={employee.name}
           email={employee.email}
+          onEmployeeClick={() => onEmployeeClick(employee.name)}
         />
       ))}
     </div>

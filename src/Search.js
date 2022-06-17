@@ -4,16 +4,14 @@ import SearchResults from "./SearchResults";
 import useGetEmployees from "./useGetEmployees";
 
 function Search() {
+  const [selectedEmployee, setSelectedEmployee] = useState("");
   const [searchActive, setSearchActive] = useState(false);
   const [searchedEmployees, setSearchedEmployees] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
   const employees = useGetEmployees();
 
   const inputFocus = (e) => {
-    setSearchActive(true);
-  };
-  const inputBlur = (e) => {
-    setSearchActive(false);
+    if (employees && employees.length) setSearchActive(true);
   };
 
   const inputChange = (e) => {
@@ -32,10 +30,16 @@ function Search() {
       setSearchActive(false);
       setIsFiltered(false);
     }
+    setSelectedEmployee(value);
   };
 
   const submitSearch = (e) => {
     e.preventDefault();
+  };
+
+  const handleSelectdEmployee = (employeeName) => {
+    setSelectedEmployee(employeeName);
+    setSearchActive(false);
   };
 
   return (
@@ -44,8 +48,8 @@ function Search() {
         <form>
           <input
             type="text"
+            value={selectedEmployee}
             onFocus={inputFocus}
-            onBlur={inputBlur}
             onChange={inputChange}
             placeholder="Choose Manager"
             aria-label="Manager"
@@ -60,7 +64,10 @@ function Search() {
         </form>
       </div>
       {employees.length > 0 && searchActive && (
-        <SearchResults employees={isFiltered ? searchedEmployees : employees} />
+        <SearchResults
+          employees={isFiltered ? searchedEmployees : employees}
+          onEmployeeClick={handleSelectdEmployee}
+        />
       )}
     </div>
   );

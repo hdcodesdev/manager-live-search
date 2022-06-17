@@ -6,6 +6,7 @@
   height: 50px;
   padding: 5px;
   border-bottom: 1px solid lightgray;
+  cursor: pointer;
 }
 
 .searchResult:last-child {
