@@ -11,7 +11,7 @@ function SearchResults({ employees, onEmployeeClick, activeIndex }) {
           initials={employee.initials}
           name={employee.name}
           email={employee.email}
-          onEmployeeClick={() => onEmployeeClick(employee.name)}
+          onEmployeeClick={() => onEmployeeClick(employee.name, index)}
           isActive={activeIndex === index}
         />
       ))}

@@ -56,8 +56,9 @@ function Search() {
     setSearchActive(false);
   };
 
-  const handleSelectdEmployee = (employeeName) => {
+  const handleSelectdEmployee = (employeeName, index = 0) => {
     setSelectedEmployee(employeeName);
+    setActiveIndex(index);
     setSearchActive(false);
   };
 
