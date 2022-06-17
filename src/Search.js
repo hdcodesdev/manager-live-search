@@ -88,6 +88,7 @@ function Search() {
           employees={isFiltered ? searchedEmployees : employees}
           onEmployeeClick={handleSelectdEmployee}
           activeIndex={activeIndex}
+          aria-label="Manager List"
         />
       )}
     </div>
