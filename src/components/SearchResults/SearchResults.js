@@ -1,6 +1,6 @@
 import React from "react";
 import "./SearchResults.css";
-import SearchResult from "./SearchResult";
+import SearchResult from "../SearchResult/SearchResult";
 
 function SearchResults({ employees, onEmployeeClick, activeIndex }) {
   return (
