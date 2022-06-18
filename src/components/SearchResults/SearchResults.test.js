@@ -1,10 +1,10 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import * as api from "./api";
+import * as api from "../../api";
 import SearchResults from "./SearchResults";
 
-jest.mock("./api");
+jest.mock("../../api");
 
-describe("EmployeesList Component", () => {
+describe("SearchResults Component", () => {
   beforeEach(() => jest.clearAllMocks());
 
   it("should display list of managers in search", async () => {

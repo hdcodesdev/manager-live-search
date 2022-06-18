@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Search.css";
-import SearchResults from "./SearchResults";
-import useGetEmployees from "./useGetEmployees";
+import SearchResults from "../SearchResults/SearchResults";
+import useGetEmployees from "../../useGetEmployees";
 
 function Search() {
   const [selectedEmployee, setSelectedEmployee] = useState("");
