@@ -1,30 +1,11 @@
 import { render, screen, waitFor } from "@testing-library/react";
-import * as api from "./api";
-import SearchResults from "./SearchResults";
+import Search from "./Search";
 
-jest.mock("./api");
-
-describe("EmployeesList Component", () => {
-  beforeEach(() => jest.clearAllMocks());
-
-  it("should display list of managers in search", async () => {
-    const employees = [
-      {
-        id: "123",
-        name: "Harriet McKinney",
-        email: "harriet.mckinney@kinetar.com",
-        initials: "HM",
-      },
-      {
-        id: "456",
-        name: "New Manager",
-        email: "new.manager@kinetar.com",
-        initials: "NM",
-      },
-    ];
-    render(<SearchResults employees={employees} />);
+describe("Search Component", () => {
+  it("should display manager search field", async () => {
+    render(<Search />);
     await waitFor(() => {
-      screen.getByText("Harriet McKinney");
+      screen.getByPlaceholderText("Choose Manager");
     });
   });
 });
